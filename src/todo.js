@@ -1,4 +1,5 @@
 import React from 'react';
+import './todoItem.css'
 
 const Todos = ({todos, deleteTodo}) => { // destructring the todos off the props object
 
@@ -6,7 +7,7 @@ const Todos = ({todos, deleteTodo}) => { // destructring the todos off the props
         todos.map(todo => {
             return (
                 <div className="collection-item" key={todo.id}>
-                    <span onClick={() => {deleteTodo(todo.id)}}>{todo.content}</span>
+                    <span className="todo-item" onClick={() => {deleteTodo(todo.id)}}>{todo.content}</span>
                 </div>
             )
         })

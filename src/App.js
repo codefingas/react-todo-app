@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import Todos from './todo'
+import Todos from './todo';
+import AddTodo from './AddForm';
 
 class App extends Component {
   state = {
@@ -15,9 +16,20 @@ class App extends Component {
     });
 
     this.setState({
-      todos,
+      todos, // used es6 to automatically augment todo
     });
   }
+
+  addTodo = (todo) => {
+    todo.id = Math.random();
+
+    let todos = [...this.state.todos, todo];
+
+    this.setState({ // adding it with es6
+      todos,
+    });
+
+  };
 
   render() {
     return (
@@ -26,6 +38,7 @@ class App extends Component {
           Todo's
         </h1>
         <Todos deleteTodo={this.deleteTodo} todos={this.state.todos} />
+        <AddTodo addTodo={this.addTodo} />
       </div>
     );
   }
