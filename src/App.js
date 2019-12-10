@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Todos from './todo'
 
 class App extends Component {
   state = {
@@ -8,10 +9,23 @@ class App extends Component {
       ]
   };
 
+  deleteTodo = (id) => {
+    const todos = this.state.todos.filter(todo => { // filters the todo to check if 
+        return todo.id !== id;
+    });
+
+    this.setState({
+      todos,
+    });
+  }
+
   render() {
     return (
-      <div className="App">
-  
+      <div className="todo-app container">
+        <h1 className="center blue-text">
+          Todo's
+        </h1>
+        <Todos deleteTodo={this.deleteTodo} todos={this.state.todos} />
       </div>
     );
   }
